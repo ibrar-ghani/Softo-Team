@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE3E052B2B45531900A39B80 /* softo_teamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E052A2B45531900A39B80 /* softo_teamApp.swift */; };
+		CE3E052D2B45531900A39B80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E052C2B45531900A39B80 /* ContentView.swift */; };
+		CE3E052F2B45531C00A39B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3E052E2B45531C00A39B80 /* Assets.xcassets */; };
+		CE3E05322B45531C00A39B80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3E05312B45531C00A39B80 /* Preview Assets.xcassets */; };
+		CE3E053C2B45531C00A39B80 /* softo_teamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E053B2B45531C00A39B80 /* softo_teamTests.swift */; };
+		CE3E05462B45531C00A39B80 /* softo_teamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05452B45531C00A39B80 /* softo_teamUITests.swift */; };
+		CE3E05482B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE3E05382B45531C00A39B80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE3E051F2B45531900A39B80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE3E05262B45531900A39B80;
+			remoteInfo = "softo-team";
+		};
+		CE3E05422B45531C00A39B80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE3E051F2B45531900A39B80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE3E05262B45531900A39B80;
+			remoteInfo = "softo-team";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE3E05272B45531900A39B80 /* softo-team.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "softo-team.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3E052A2B45531900A39B80 /* softo_teamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamApp.swift; sourceTree = "<group>"; };
+		CE3E052C2B45531900A39B80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CE3E052E2B45531C00A39B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE3E05312B45531C00A39B80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE3E05372B45531C00A39B80 /* softo-teamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "softo-teamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3E053B2B45531C00A39B80 /* softo_teamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamTests.swift; sourceTree = "<group>"; };
+		CE3E05412B45531C00A39B80 /* softo-teamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "softo-teamUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3E05452B45531C00A39B80 /* softo_teamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamUITests.swift; sourceTree = "<group>"; };
+		CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE3E05242B45531900A39B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E05342B45531C00A39B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E053E2B45531C00A39B80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE3E051E2B45531900A39B80 = {
+			isa = PBXGroup;
+			children = (
+				CE3E05292B45531900A39B80 /* softo-team */,
+				CE3E053A2B45531C00A39B80 /* softo-teamTests */,
+				CE3E05442B45531C00A39B80 /* softo-teamUITests */,
+				CE3E05282B45531900A39B80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE3E05282B45531900A39B80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05272B45531900A39B80 /* softo-team.app */,
+				CE3E05372B45531C00A39B80 /* softo-teamTests.xctest */,
+				CE3E05412B45531C00A39B80 /* softo-teamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE3E05292B45531900A39B80 /* softo-team */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E052A2B45531900A39B80 /* softo_teamApp.swift */,
+				CE3E052C2B45531900A39B80 /* ContentView.swift */,
+				CE3E052E2B45531C00A39B80 /* Assets.xcassets */,
+				CE3E05302B45531C00A39B80 /* Preview Content */,
+			);
+			path = "softo-team";
+			sourceTree = "<group>";
+		};
+		CE3E05302B45531C00A39B80 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05312B45531C00A39B80 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE3E053A2B45531C00A39B80 /* softo-teamTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E053B2B45531C00A39B80 /* softo_teamTests.swift */,
+			);
+			path = "softo-teamTests";
+			sourceTree = "<group>";
+		};
+		CE3E05442B45531C00A39B80 /* softo-teamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05452B45531C00A39B80 /* softo_teamUITests.swift */,
+				CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */,
+			);
+			path = "softo-teamUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE3E05262B45531900A39B80 /* softo-team */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE3E054B2B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-team" */;
+			buildPhases = (
+				CE3E05232B45531900A39B80 /* Sources */,
+				CE3E05242B45531900A39B80 /* Frameworks */,
+				CE3E05252B45531900A39B80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "softo-team";
+			productName = "softo-team";
+			productReference = CE3E05272B45531900A39B80 /* softo-team.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE3E05362B45531C00A39B80 /* softo-teamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE3E054E2B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-teamTests" */;
+			buildPhases = (
+				CE3E05332B45531C00A39B80 /* Sources */,
+				CE3E05342B45531C00A39B80 /* Frameworks */,
+				CE3E05352B45531C00A39B80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE3E05392B45531C00A39B80 /* PBXTargetDependency */,
+			);
+			name = "softo-teamTests";
+			productName = "softo-teamTests";
+			productReference = CE3E05372B45531C00A39B80 /* softo-teamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE3E05402B45531C00A39B80 /* softo-teamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE3E05512B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-teamUITests" */;
+			buildPhases = (
+				CE3E053D2B45531C00A39B80 /* Sources */,
+				CE3E053E2B45531C00A39B80 /* Frameworks */,
+				CE3E053F2B45531C00A39B80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE3E05432B45531C00A39B80 /* PBXTargetDependency */,
+			);
+			name = "softo-teamUITests";
+			productName = "softo-teamUITests";
+			productReference = CE3E05412B45531C00A39B80 /* softo-teamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE3E051F2B45531900A39B80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					CE3E05262B45531900A39B80 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					CE3E05362B45531C00A39B80 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = CE3E05262B45531900A39B80;
+					};
+					CE3E05402B45531C00A39B80 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = CE3E05262B45531900A39B80;
+					};
+				};
+			};
+			buildConfigurationList = CE3E05222B45531900A39B80 /* Build configuration list for PBXProject "softo-team" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE3E051E2B45531900A39B80;
+			productRefGroup = CE3E05282B45531900A39B80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE3E05262B45531900A39B80 /* softo-team */,
+				CE3E05362B45531C00A39B80 /* softo-teamTests */,
+				CE3E05402B45531C00A39B80 /* softo-teamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE3E05252B45531900A39B80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE3E05322B45531C00A39B80 /* Preview Assets.xcassets in Resources */,
+				CE3E052F2B45531C00A39B80 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E05352B45531C00A39B80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E053F2B45531C00A39B80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE3E05232B45531900A39B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE3E052D2B45531900A39B80 /* ContentView.swift in Sources */,
+				CE3E052B2B45531900A39B80 /* softo_teamApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E05332B45531C00A39B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE3E053C2B45531C00A39B80 /* softo_teamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE3E053D2B45531C00A39B80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE3E05462B45531C00A39B80 /* softo_teamUITests.swift in Sources */,
+				CE3E05482B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE3E05392B45531C00A39B80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE3E05262B45531900A39B80 /* softo-team */;
+			targetProxy = CE3E05382B45531C00A39B80 /* PBXContainerItemProxy */;
+		};
+		CE3E05432B45531C00A39B80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE3E05262B45531900A39B80 /* softo-team */;
+			targetProxy = CE3E05422B45531C00A39B80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CE3E05492B45531C00A39B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE3E054A2B45531C00A39B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE3E054C2B45531C00A39B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"softo-team/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-team";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE3E054D2B45531C00A39B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"softo-team/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-team";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CE3E054F2B45531C00A39B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-teamTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/softo-team.app/softo-team";
+			};
+			name = Debug;
+		};
+		CE3E05502B45531C00A39B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-teamTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/softo-team.app/softo-team";
+			};
+			name = Release;
+		};
+		CE3E05522B45531C00A39B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-teamUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "softo-team";
+			};
+			name = Debug;
+		};
+		CE3E05532B45531C00A39B80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Q5LBJLN8Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SoftoSol.softo-teamUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "softo-team";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE3E05222B45531900A39B80 /* Build configuration list for PBXProject "softo-team" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE3E05492B45531C00A39B80 /* Debug */,
+				CE3E054A2B45531C00A39B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE3E054B2B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-team" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE3E054C2B45531C00A39B80 /* Debug */,
+				CE3E054D2B45531C00A39B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE3E054E2B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-teamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE3E054F2B45531C00A39B80 /* Debug */,
+				CE3E05502B45531C00A39B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE3E05512B45531C00A39B80 /* Build configuration list for PBXNativeTarget "softo-teamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE3E05522B45531C00A39B80 /* Debug */,
+				CE3E05532B45531C00A39B80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE3E051F2B45531900A39B80 /* Project object */;
+}
