@@ -112,6 +112,7 @@ struct SignUpView: View{
                 }
             })
             .buttonStyle(.borderedProminent)
+            .navigationBarBackButtonHidden(true)
         NavigationLink(
             destination: Onboarding1(),
             isActive: $isOnboarding1Active,
@@ -124,8 +125,8 @@ struct SignUpView: View{
                                 .underline()
                         }
                         .padding()
+                        .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true) // Hide back button
     }
     }
 }

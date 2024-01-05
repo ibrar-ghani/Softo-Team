@@ -65,6 +65,7 @@ struct LogInView: View {
                 }
             })
             .buttonStyle(.borderedProminent)
+            .navigationBarBackButtonHidden(true) // Hide back button
             NavigationLink(
                 destination: HomeScreen(),
                 isActive: $isHomeScreenActive,
@@ -79,8 +80,8 @@ struct LogInView: View {
                                 .underline()
                         }
                         .padding()
+                        .navigationBarBackButtonHidden(true) // Hide back button
         }
-        .navigationBarBackButtonHidden(true) // Hide back button
         }
     .navigationViewStyle(StackNavigationViewStyle())
         

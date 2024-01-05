@@ -18,7 +18,6 @@ struct Onboarding1: View {
     let checkboxTexts = ["Figma Designer", "IOS Developer", "Flutter Developer", "Node.js Developer", "Android Developer"]
     
     var body: some View {
-        NavigationView{
         ScrollView {
             VStack {
               Text("Career Preferences")
@@ -55,7 +54,7 @@ struct Onboarding1: View {
                     label: { EmptyView() }
                 )
                 
-                .navigationBarBackButtonHidden(true)
+               // .navigationBarBackButtonHidden(true)
 
                 Button("Next") {
                     if selectedOptions.contains(true) {
@@ -78,7 +77,6 @@ struct Onboarding1: View {
         }
         }
         }
-    }
 
 // Function to update user data and onboarding data in Firestore
     func UpdateUserDataInFirestore() {

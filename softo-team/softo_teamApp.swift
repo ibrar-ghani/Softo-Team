@@ -25,7 +25,7 @@ struct softo_teamApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Onboarding2()
+            LogInView()
         }
     }
 }
