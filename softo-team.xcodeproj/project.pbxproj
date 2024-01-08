@@ -120,9 +120,9 @@
 				CE991CB52B46938C00BBFA7F /* Onboarding3.swift */,
 				CE9DB8712B47EE800003CEBD /* Onboarding4.swift */,
 				CE3E05562B45534300A39B80 /* LogInView.swift */,
-				CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */,
-				CE3E055A2B45536000A39B80 /* HomeScreen.swift */,
 				CE3E05582B45535400A39B80 /* SignUpView.swift */,
+				CE3E055A2B45536000A39B80 /* HomeScreen.swift */,
+				CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */,
 				CE3E052E2B45531C00A39B80 /* Assets.xcassets */,
 				CE3E05302B45531C00A39B80 /* Preview Content */,
 			);

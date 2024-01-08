@@ -58,36 +58,72 @@ struct SignUpView: View{
             //user details section
             Section{
                 VStack(alignment: .leading){
+                    //First Name
+                    //{
                 Text("First Name")
                         .padding(.leading,20)
                  TextField("Enter Your First Name",text: $firstname)
                         .padding(.horizontal,20)
                         .textFieldStyle(.roundedBorder)
-                
+                    //}
+                    
+                //Last Name
+                    //{
                     Text("Last Name")
                     .padding(.leading,20)
                 TextField("Enter Your Last Name",text: $lastname)
                 .padding(.horizontal,20)
                 .textFieldStyle(.roundedBorder)
-                
+                    //}
+                    
+                    
+                // Email
                 Text("Email")
-                .padding(.leading,20)
-                TextField("Enter Your Email",text: $username)
-                .padding(.horizontal,20)
+                .padding(.leading, 20)
+                TextField("Enter Your Email", text: $username)
+                .padding(.horizontal, 2)
                 .textFieldStyle(.roundedBorder)
-                
+                .autocapitalization(.none)
+                .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                .stroke(isValidEmail(email: username) ? Color.green : Color.red, lineWidth: 2)
+                )
+                .padding([.leading, .trailing], 20)
+                .frame(height: 40) // Set the desired height for both the TextField and the overlay
+                .frame(width: 350)
+                    
+                // Password
                 Text("Password")
-                        .padding(.leading,20)
-                TextField("Create A Strong Password",text:$password)
-                .padding(.horizontal,20)
+                        .padding(.leading, 20)
+                TextField("Create A Strong Password", text: $password)
+                .padding(.horizontal, 20)
                 .textFieldStyle(.roundedBorder)
+                .autocapitalization(.none)
+                // Confirm Password
+                Text("Confirm Password")
+                        .padding(.leading,20)
+                TextField("Enter Same Password", text: $conformpassword)
+                .padding(.horizontal, 2)
+                .textFieldStyle(.roundedBorder)
+                .autocapitalization(.none)
+                .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(conformpassword == password ? Color.green : Color.red, lineWidth: 2)
+                        )
+                .padding([.leading, .trailing], 20)
+                .frame(height:40)
+                .frame(width:350)
+                .onChange(of: conformpassword) { newValue in
+                // Check if the conform password matches the password
+                    print("Passwords Match")
+                if newValue != password {
+                // You can show an error message or handle it accordingly
+                // For now, let's print a message
+                print("Passwords do not match!")
+                }
+                }
                 
-                
-                Text("Conform Password")
-                    .padding(.leading,20)
-                TextField("Enter Same Password",text: $conformpassword)
-                    .padding(.horizontal,20)
-                    .textFieldStyle(.roundedBorder)
+                    
                 }
             }
             .padding(.bottom,50)
@@ -128,6 +164,11 @@ struct SignUpView: View{
                         .navigationBarBackButtonHidden(true)
         }
     }
+    }
+    // Function to check the email format
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 }
 

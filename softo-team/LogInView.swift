@@ -17,6 +17,7 @@ struct LogInView: View {
     
     var body: some View {
         NavigationView{
+            ScrollView{
         VStack{
             Section{
                 // Logo Section
@@ -33,16 +34,29 @@ struct LogInView: View {
             Section{
                 
                 VStack(alignment: .leading){
+                    
                     Text("Username")
-                        .padding(.leading,20)
-                    TextField("Enter Your Email",text: $username)
-                        .padding(.horizontal,20)
-                        .textFieldStyle(.roundedBorder)
+                    .padding(.leading,20)
+                    
+                    TextField("Enter Your Email", text: $username)
+                    .padding(.horizontal, 2)
+                    .textFieldStyle(.roundedBorder)
+                    .autocapitalization(.none)
+                    .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                    .stroke(isValidEmail(email: username) ? Color.green : Color.red, lineWidth: 2)
+                    )
+                    .padding([.leading, .trailing], 20)
+                    .frame(height: 40) // Set the desired height for both the TextField and the overlay
+                    .frame(width: 350)
+                    
+                    
                     Text("Password")
                         .padding(.leading,20)
                     TextField("Enter Your Password",text: $password)
                         .padding(.horizontal,20)
                         .textFieldStyle(.roundedBorder)
+                        .autocapitalization(.none)
                 }
             }
             .padding(.bottom,50)
@@ -83,10 +97,17 @@ struct LogInView: View {
                         .navigationBarBackButtonHidden(true) // Hide back button
         }
         }
-    .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+    // Function to check the email format
+    func isValidEmail(email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
         
     }
 }
+    
+
 
 
 struct LogInView_Previews: PreviewProvider {

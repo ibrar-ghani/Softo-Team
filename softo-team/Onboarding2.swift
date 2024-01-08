@@ -42,7 +42,7 @@ struct Onboarding2: View {
                 .padding()
                 
                 // Gender Dropdown
-                HStack(alignment: .firstTextBaseline, spacing: 260) {
+                HStack(alignment: .firstTextBaseline, spacing: 150) {
                     Text("Gender")
                         .font(.headline)
                     
@@ -62,10 +62,10 @@ struct Onboarding2: View {
                     .padding()
                 
                 // Phone Number with Country Code
-                VStack(alignment: .leading, spacing: 13) {
+                VStack(alignment: .leading) {
                     Text("Phone Number")
                         .font(.headline)
-                        .padding(.leading, 15)
+                        .padding()
                     
                     HStack {
                         // Country Code Picker
@@ -78,16 +78,24 @@ struct Onboarding2: View {
                         .frame(width: 100)
                         
                         // Phone Number Text Field
-                        TextField("Enter Phone Number", text: $phoneNumber)
+                        TextField("eg:3000000000", text: $phoneNumber)
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.phonePad)
+                            .onChange(of: phoneNumber) { newValue in
+                                let filtered = newValue.filter { $0.isNumber }
+                                if filtered.count > 10 {
+                                    phoneNumber = String(filtered.prefix(10))
+                                } else {
+                                    phoneNumber = filtered
+                                }
+                            }
                     }
                     .padding()
                 }
                 
                 // Blood Group Dropdown
-                HStack(alignment: .firstTextBaseline, spacing: 190) {
+                HStack(alignment: .firstTextBaseline, spacing: 150) {
                     Text("Blood Group")
                         .font(.headline)
                     
