@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
+import Combine
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -11,38 +12,40 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class AuthViewModel: ObservableObject {
+
     @Published var isLoggedIn: Bool = false
 
-    init() {
-        // Check the initial authentication status
-        checkAuthenticationStatus()
-    }
 
-    func checkAuthenticationStatus() {
+    // Check if user already loged in
+    func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser != nil {
-            // User is logged in
-            isLoggedIn = true
-        } else {
-            // User is not logged in
-            isLoggedIn = false
+            self.isLoggedIn = true
         }
     }
+    
+
+    
 }
 
+
+
+
 @main
+
 struct softo_teamApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var authViewModel = AuthViewModel()
-
+    
+    
+    
     var body: some Scene {
         WindowGroup {
-            if authViewModel.isLoggedIn {
-                HomeScreen()
-            } else {
-                LogInView()
-            }
+            
+            LogInView()
+                .environmentObject(authViewModel)
+            
         }
+        
     }
+        
 }
-
-    

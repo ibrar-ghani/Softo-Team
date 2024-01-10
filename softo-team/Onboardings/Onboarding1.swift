@@ -11,7 +11,9 @@ import FirebaseAuth
 
 struct Onboarding1: View {
     @State private var onboardingProgress: CGFloat = 1.0 / 4.0 // Initial progress
-    @State private var selectedOptions: [Bool] = Array(repeating: false, count: 5)
+    @AppStorage("isAnyOptionSelected") private var isAnyOptionSelected: Bool = false
+        @State private var selectedOptions: [Bool] = Array(repeating: false, count: 5)
+    //@State private var selectedOptions: [Bool] = Array(repeating: false, count: 5)
     @State private var isOnboarding2Active = false
     @State private var showAlert = false
     
@@ -43,7 +45,13 @@ struct Onboarding1: View {
                     .padding()
 
                 ForEach(0..<5) { index in
-                    CheckboxRow(text: checkboxTexts[index], isSelected: $selectedOptions[index])
+                    CheckboxRow(text: checkboxTexts[index], isSelected: Binding(
+                                            get: { selectedOptions[index] },
+                                            set: { newValue in
+                                                selectedOptions[index] = newValue
+                                                isAnyOptionSelected = selectedOptions.contains(true)
+                                            }
+                                        ))
                         .padding(.vertical, 15)
                 }
                 Spacer()

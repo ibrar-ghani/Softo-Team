@@ -115,13 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				CE3E052A2B45531900A39B80 /* softo_teamApp.swift */,
-				CE3E05542B45533800A39B80 /* Onboarding1.swift */,
-				CE3E05652B45737700A39B80 /* Onboarding2.swift */,
-				CE991CB52B46938C00BBFA7F /* Onboarding3.swift */,
-				CE9DB8712B47EE800003CEBD /* Onboarding4.swift */,
-				CE3E05562B45534300A39B80 /* LogInView.swift */,
-				CE3E05582B45535400A39B80 /* SignUpView.swift */,
-				CE3E055A2B45536000A39B80 /* HomeScreen.swift */,
+				CEE7067B2B4D1E2900598174 /* Auth */,
+				CEE7067D2B4D1E5400598174 /* Onboardings */,
+				CEE7067C2B4D1E4000598174 /* Home */,
 				CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */,
 				CE3E052E2B45531C00A39B80 /* Assets.xcassets */,
 				CE3E05302B45531C00A39B80 /* Preview Content */,
@@ -152,6 +148,34 @@
 				CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */,
 			);
 			path = "softo-teamUITests";
+			sourceTree = "<group>";
+		};
+		CEE7067B2B4D1E2900598174 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05562B45534300A39B80 /* LogInView.swift */,
+				CE3E05582B45535400A39B80 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CEE7067C2B4D1E4000598174 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E055A2B45536000A39B80 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEE7067D2B4D1E5400598174 /* Onboardings */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05542B45533800A39B80 /* Onboarding1.swift */,
+				CE3E05652B45737700A39B80 /* Onboarding2.swift */,
+				CE991CB52B46938C00BBFA7F /* Onboarding3.swift */,
+				CE9DB8712B47EE800003CEBD /* Onboarding4.swift */,
+			);
+			path = Onboardings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,6 +11,8 @@ import Firebase
 struct Onboarding4: View {
     @State private var permanentAddress: String = ""
     @State private var currentAddress: String = ""
+    @AppStorage("permanentAddress") private var PermanentAddress: String = ""
+    @AppStorage("currentAddress") private var CurrentAddress: String = ""
     @State private var isOnboardingComplete = false
     @State private var isHomeScreenActive = false
     @State private var onboardingProgress: CGFloat = 4.0 / 4.0 // Updated progress for Onboarding 4
@@ -52,11 +54,19 @@ struct Onboarding4: View {
             // Button to complete onboarding
             Button("Complete Onboarding") {
                 // Perform actions when the onboarding is complete
+                if currentAddress.isEmpty || permanentAddress.isEmpty {
+                print("Please fill the required fields")
+                } else {
                 isHomeScreenActive = true
                 updateUserDataInFirestore()
+                }
             }
             .buttonStyle(.borderedProminent)
             .padding()
+            .onAppear(){
+                currentAddress=""
+                permanentAddress=""
+            }
 
             Spacer()
         }

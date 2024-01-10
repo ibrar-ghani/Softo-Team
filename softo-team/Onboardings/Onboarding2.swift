@@ -10,10 +10,11 @@ import Firebase
 
 struct Onboarding2: View {
     @State private var onboardingProgress: CGFloat = 2.0 / 4.0 // Updated progress for Onboarding 2
-    @State private var selectedGender: String = ""
-    @State private var birthDate = Date()
-    @State private var phoneNumber: String = ""
-    @State private var selectedCountryCode = "+1"
+    @AppStorage("selectedGender") private var selectedGender: String = ""
+    @AppStorage("birthDate") private var birthDateRaw: TimeInterval = Date().timeIntervalSinceReferenceDate
+    @State private var birthDate: Date = Date()
+    @AppStorage("phoneNumber") private var phoneNumber: String = ""
+    @AppStorage("selectedCountryCode") private var selectedCountryCode: String = "+1"
     @State private var isOnboarding3Active = false
     @State private var showAlert = false
     @State private var countryCodes: [String] = [
@@ -57,9 +58,12 @@ struct Onboarding2: View {
                 
                 // Date of Birth
                 DatePicker("Date of Birth", selection: $birthDate, displayedComponents: .date)
-                    .font(.headline)
-                    .datePickerStyle(CompactDatePickerStyle())
-                    .padding()
+                                    .font(.headline)
+                                    .datePickerStyle(CompactDatePickerStyle())
+                                    .padding()
+                                    .onChange(of: birthDate) { newValue in
+                                        birthDateRaw = newValue.timeIntervalSinceReferenceDate
+                                    }
                 
                 // Phone Number with Country Code
                 VStack(alignment: .leading) {
@@ -129,6 +133,13 @@ struct Onboarding2: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .padding()
+                    .onAppear(){
+                        selectedCountryCode="+1"
+                        phoneNumber=""
+                        birthDate=Date()
+                        birthDateRaw = Date().timeIntervalSinceReferenceDate
+                        selectedGender=""
+                    }
             }
             .alert(isPresented: $showAlert) {
                 Alert(
