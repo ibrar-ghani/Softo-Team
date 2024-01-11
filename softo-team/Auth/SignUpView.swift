@@ -23,7 +23,9 @@ struct SignUpView: View{
     @State var password:String=""
     @State var conformpassword:String=""
     @State private var isLogInActive = false
-    @State private var isOnboarding1Active = false
+    @State private var isTabViewActive = false
+    @State private var selectedTab: Int = 0
+    @State private var isSecure: Bool = true
     @AppStorage("user_firstname") private var storedFirstname: String = ""
     @AppStorage("user_lastname") private var storedLastname: String = ""
     @AppStorage("user_username") private var storedUsername: String = ""
@@ -82,24 +84,68 @@ struct SignUpView: View{
                             // Password
                             Text("Password")
                                 .padding(.leading, 20)
-                            TextField("Create A Strong Password", text: $password)
-                                .padding(.horizontal, 20)
-                                .textFieldStyle(.roundedBorder)
-                                .autocapitalization(.none)
+                            ZStack(alignment: .trailing) {
+                                            if isSecure {
+                                                SecureField("Enter Your Password", text: $password)
+                                                    .padding(.horizontal, 10)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                            } else {
+                                                TextField("Enter Your Password", text: $password)
+                                                    .padding(.horizontal, 10)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                            }
+
+                                            Button(action: {
+                                                isSecure.toggle()
+                                            }) {
+                                                Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
+                                                    .foregroundColor(.gray)
+                                                    .padding(.trailing, 10)
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                        }
+                                        .padding()
                             // Confirm Password
                             Text("Confirm Password")
                                 .padding(.leading,20)
-                            TextField("Enter Same Password", text: $conformpassword)
-                                .padding(.horizontal, 2)
-                                .textFieldStyle(.roundedBorder)
-                                .autocapitalization(.none)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(conformpassword == password ? Color.green : Color.red, lineWidth: 2)
-                                )
-                                .padding([.leading, .trailing], 20)
-                                .frame(height:40)
-                                .frame(width:350)
+                            ZStack(alignment: .trailing) {
+                                            if isSecure {
+                                                SecureField("Enter Same Password", text: $conformpassword)
+                                                    .padding(.horizontal, 2)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                                    .overlay(
+                                                RoundedRectangle(cornerRadius: 5)
+                                                .stroke(conformpassword == password ? Color.green : Color.red, lineWidth: 2)
+                                                                                    )
+                                            } else {
+                                                TextField("Enter Same Password", text: $conformpassword)
+                                                    .padding(.horizontal, 2)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                                    .overlay(
+                                                    RoundedRectangle(cornerRadius: 5)
+                                                .stroke(conformpassword == password ? Color.green : Color.red, lineWidth: 2)
+                                                                                    )
+                                            }
+
+                                            Button(action: {
+                                                isSecure.toggle()
+                                            }) {
+                                                Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
+                                                    .foregroundColor(.gray)
+                                                    .padding(.trailing, 10)
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                        }
+                                        .padding()
+                                .padding([.leading, .trailing], 10)
                                 .onChange(of: conformpassword) { newValue in
                                     // Check if the conform password matches the password
                                     print("Passwords Match")
@@ -120,9 +166,23 @@ struct SignUpView: View{
 //                        }
 //                    )
                     
-                    .fullScreenCover(isPresented: $isOnboarding1Active, content: {
-                                    Onboarding1()
-                                })
+//                    .fullScreenCover(isPresented: $isTabViewActive){
+//                        Group {
+//                                TabView {
+//                                    Onboarding1(selectedTab: $selectedTab)
+//                                        .tag(0)
+//                                    Onboarding2(selectedTab: $selectedTab)
+//                                        .tag(1)
+//                                    Onboarding3()
+//                                        .tag(2)
+//                                    Onboarding4()
+//                                        .tag(3)
+//                                }
+//                            }
+//                    }
+                    NavigationLink(destination: MyTabView(), isActive: $isTabViewActive) {
+                        EmptyView()
+                    }
                     .navigationBarBackButtonHidden(true)
                     Button("Create", action: {
                         if username == "" || password == "" || firstname=="" || lastname=="" {
@@ -141,7 +201,7 @@ struct SignUpView: View{
                                      storedLastname = lastname
                                      storedUsername = username
                                     
-                                    isOnboarding1Active = true
+                                    isTabViewActive = true
                                 }
                             }
                         }
@@ -164,7 +224,7 @@ struct SignUpView: View{
                     }
                     .padding()
                     .navigationBarBackButtonHidden(true)
-                }
+                }.navigationBarBackButtonHidden(true)
                 }
                 
             }

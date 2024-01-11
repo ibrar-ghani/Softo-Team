@@ -23,6 +23,16 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    // Sign out user
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            isLoggedIn = false
+        } catch let error as NSError {
+            print("Error signing out: \(error.localizedDescription)")
+        }
+    }
+    
 
     
 }

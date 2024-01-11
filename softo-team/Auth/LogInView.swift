@@ -16,6 +16,7 @@ struct LogInView: View {
     @State private var isHomeScreenActive = false
     @State private var isOnboarding1Active = false
     @State private var showErrorAlert = false
+    @State private var isSecure: Bool = true
     @State private var errorMessage = ""
     @EnvironmentObject private var viewModel: AuthViewModel
     
@@ -40,7 +41,7 @@ struct LogInView: View {
                                 .padding(.leading, 20)
                             
                             TextField("Enter Your Email", text: $username)
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, 2)
                                 .textFieldStyle(.roundedBorder)
                                 .autocapitalization(.none)
                                 .overlay(
@@ -53,11 +54,34 @@ struct LogInView: View {
                             
                             Text("Password")
                                 .padding(.leading, 20)
-                            
-                            TextField("Enter Your Password", text: $password)
-                                .padding(.horizontal, 20)
-                                .textFieldStyle(.roundedBorder)
-                                .autocapitalization(.none)
+                            ZStack(alignment: .trailing) {
+                                            if isSecure {
+                                                SecureField("Enter Your Password", text: $password)
+                                                    .padding(.horizontal, 10)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                            } else {
+                                                TextField("Enter Your Password", text: $password)
+                                                    .padding(.horizontal, 10)
+                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                    .autocapitalization(.none)
+                                                    .disableAutocorrection(true)
+                                            }
+
+                                            Button(action: {
+                                                isSecure.toggle()
+                                            }) {
+                                                Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
+                                                    .foregroundColor(.gray)
+                                                    .padding(.trailing, 10)
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
+                                        }
+                                        .padding()
+
+
+
                         }
                     }
                     .padding(.bottom, 30)

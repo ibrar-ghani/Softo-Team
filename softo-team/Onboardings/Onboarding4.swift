@@ -16,6 +16,7 @@ struct Onboarding4: View {
     @State private var isOnboardingComplete = false
     @State private var isHomeScreenActive = false
     @State private var onboardingProgress: CGFloat = 4.0 / 4.0 // Updated progress for Onboarding 4
+    @Binding var selectedTab: Int
 
     var body: some View {
         VStack {
@@ -45,20 +46,20 @@ struct Onboarding4: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
-            NavigationLink(
-                destination: HomeScreen(),
-                isActive: $isHomeScreenActive,
-                label: {
-                EmptyView() // Use EmptyView to create a hidden navigation link label
-                                })
+//            NavigationLink(
+//                destination: HomeScreen(),
+//                isActive: $isHomeScreenActive,
+//                label: {
+//                EmptyView() // Use EmptyView to create a hidden navigation link label
+//                                })
             // Button to complete onboarding
             Button("Complete Onboarding") {
                 // Perform actions when the onboarding is complete
                 if currentAddress.isEmpty || permanentAddress.isEmpty {
                 print("Please fill the required fields")
                 } else {
-                isHomeScreenActive = true
                 updateUserDataInFirestore()
+                    selectedTab = 4
                 }
             }
             .buttonStyle(.borderedProminent)
@@ -100,8 +101,8 @@ struct Onboarding4: View {
 
 }
 
-struct Onboarding4_Previews: PreviewProvider {
-    static var previews: some View {
-        Onboarding4()
-    }
-}
+//struct Onboarding4_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Onboarding4()
+//    }
+//}
