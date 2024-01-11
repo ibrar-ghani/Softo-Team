@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		CE3E052B2B45531900A39B80 /* softo_teamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E052A2B45531900A39B80 /* softo_teamApp.swift */; };
-		CE3E052D2B45531900A39B80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E052C2B45531900A39B80 /* ContentView.swift */; };
 		CE3E052F2B45531C00A39B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3E052E2B45531C00A39B80 /* Assets.xcassets */; };
 		CE3E05322B45531C00A39B80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3E05312B45531C00A39B80 /* Preview Assets.xcassets */; };
 		CE3E053C2B45531C00A39B80 /* softo_teamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E053B2B45531C00A39B80 /* softo_teamTests.swift */; };
 		CE3E05462B45531C00A39B80 /* softo_teamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05452B45531C00A39B80 /* softo_teamUITests.swift */; };
 		CE3E05482B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */; };
+		CE3E05552B45533800A39B80 /* Onboarding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05542B45533800A39B80 /* Onboarding1.swift */; };
+		CE3E05572B45534300A39B80 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05562B45534300A39B80 /* LogInView.swift */; };
+		CE3E05592B45535500A39B80 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05582B45535400A39B80 /* SignUpView.swift */; };
+		CE3E055B2B45536100A39B80 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E055A2B45536000A39B80 /* HomeScreen.swift */; };
+		CE3E055D2B45545500A39B80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */; };
+		CE3E05602B4554B000A39B80 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE3E055F2B4554B000A39B80 /* FirebaseAuth */; };
+		CE3E05622B4554B000A39B80 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CE3E05612B4554B000A39B80 /* FirebaseDatabase */; };
+		CE3E05642B4554B000A39B80 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE3E05632B4554B000A39B80 /* FirebaseFirestore */; };
+		CE3E05662B45737700A39B80 /* Onboarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E05652B45737700A39B80 /* Onboarding2.swift */; };
+		CE991CB62B46938C00BBFA7F /* Onboarding3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE991CB52B46938C00BBFA7F /* Onboarding3.swift */; };
+		CE9DB8722B47EE800003CEBD /* Onboarding4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB8712B47EE800003CEBD /* Onboarding4.swift */; };
+		CECAC3D32B4FB76F006DF030 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAC3D22B4FB76F006DF030 /* SettingsView.swift */; };
+		CECAC3D52B4FBDD9006DF030 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAC3D42B4FBDD9006DF030 /* TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +48,6 @@
 /* Begin PBXFileReference section */
 		CE3E05272B45531900A39B80 /* softo-team.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "softo-team.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3E052A2B45531900A39B80 /* softo_teamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamApp.swift; sourceTree = "<group>"; };
-		CE3E052C2B45531900A39B80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE3E052E2B45531C00A39B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3E05312B45531C00A39B80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE3E05372B45531C00A39B80 /* softo-teamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "softo-teamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +55,16 @@
 		CE3E05412B45531C00A39B80 /* softo-teamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "softo-teamUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3E05452B45531C00A39B80 /* softo_teamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamUITests.swift; sourceTree = "<group>"; };
 		CE3E05472B45531C00A39B80 /* softo_teamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = softo_teamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CE3E05542B45533800A39B80 /* Onboarding1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding1.swift; sourceTree = "<group>"; };
+		CE3E05562B45534300A39B80 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		CE3E05582B45535400A39B80 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		CE3E055A2B45536000A39B80 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE3E05652B45737700A39B80 /* Onboarding2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding2.swift; sourceTree = "<group>"; };
+		CE991CB52B46938C00BBFA7F /* Onboarding3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding3.swift; sourceTree = "<group>"; };
+		CE9DB8712B47EE800003CEBD /* Onboarding4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding4.swift; sourceTree = "<group>"; };
+		CECAC3D22B4FB76F006DF030 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CECAC3D42B4FBDD9006DF030 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3E05622B4554B000A39B80 /* FirebaseDatabase in Frameworks */,
+				CE3E05602B4554B000A39B80 /* FirebaseAuth in Frameworks */,
+				CE3E05642B4554B000A39B80 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				CE3E052A2B45531900A39B80 /* softo_teamApp.swift */,
-				CE3E052C2B45531900A39B80 /* ContentView.swift */,
+				CEE7067B2B4D1E2900598174 /* Auth */,
+				CEE7067D2B4D1E5400598174 /* Onboardings */,
+				CEE7067C2B4D1E4000598174 /* Home */,
+				CE3E055C2B45545500A39B80 /* GoogleService-Info.plist */,
 				CE3E052E2B45531C00A39B80 /* Assets.xcassets */,
 				CE3E05302B45531C00A39B80 /* Preview Content */,
 			);
@@ -127,6 +154,36 @@
 			path = "softo-teamUITests";
 			sourceTree = "<group>";
 		};
+		CEE7067B2B4D1E2900598174 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05562B45534300A39B80 /* LogInView.swift */,
+				CE3E05582B45535400A39B80 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CEE7067C2B4D1E4000598174 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E055A2B45536000A39B80 /* HomeScreen.swift */,
+				CECAC3D22B4FB76F006DF030 /* SettingsView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEE7067D2B4D1E5400598174 /* Onboardings */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E05542B45533800A39B80 /* Onboarding1.swift */,
+				CE3E05652B45737700A39B80 /* Onboarding2.swift */,
+				CE991CB52B46938C00BBFA7F /* Onboarding3.swift */,
+				CE9DB8712B47EE800003CEBD /* Onboarding4.swift */,
+				CECAC3D42B4FBDD9006DF030 /* TabView.swift */,
+			);
+			path = Onboardings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +200,11 @@
 			dependencies = (
 			);
 			name = "softo-team";
+			packageProductDependencies = (
+				CE3E055F2B4554B000A39B80 /* FirebaseAuth */,
+				CE3E05612B4554B000A39B80 /* FirebaseDatabase */,
+				CE3E05632B4554B000A39B80 /* FirebaseFirestore */,
+			);
 			productName = "softo-team";
 			productReference = CE3E05272B45531900A39B80 /* softo-team.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +277,9 @@
 				Base,
 			);
 			mainGroup = CE3E051E2B45531900A39B80;
+			packageReferences = (
+				CE3E055E2B4554B000A39B80 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CE3E05282B45531900A39B80 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +298,7 @@
 			files = (
 				CE3E05322B45531C00A39B80 /* Preview Assets.xcassets in Resources */,
 				CE3E052F2B45531C00A39B80 /* Assets.xcassets in Resources */,
+				CE3E055D2B45545500A39B80 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +323,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3E052D2B45531900A39B80 /* ContentView.swift in Sources */,
+				CECAC3D52B4FBDD9006DF030 /* TabView.swift in Sources */,
+				CE9DB8722B47EE800003CEBD /* Onboarding4.swift in Sources */,
+				CE3E05552B45533800A39B80 /* Onboarding1.swift in Sources */,
+				CE3E05592B45535500A39B80 /* SignUpView.swift in Sources */,
+				CECAC3D32B4FB76F006DF030 /* SettingsView.swift in Sources */,
+				CE991CB62B46938C00BBFA7F /* Onboarding3.swift in Sources */,
+				CE3E05662B45737700A39B80 /* Onboarding2.swift in Sources */,
+				CE3E055B2B45536100A39B80 /* HomeScreen.swift in Sources */,
+				CE3E05572B45534300A39B80 /* LogInView.swift in Sources */,
 				CE3E052B2B45531900A39B80 /* softo_teamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +657,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE3E055E2B4554B000A39B80 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE3E055F2B4554B000A39B80 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE3E055E2B4554B000A39B80 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CE3E05612B4554B000A39B80 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE3E055E2B4554B000A39B80 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		CE3E05632B4554B000A39B80 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE3E055E2B4554B000A39B80 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE3E051F2B45531900A39B80 /* Project object */;
 }
