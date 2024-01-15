@@ -15,8 +15,10 @@ struct Onboarding4: View {
     @AppStorage("currentAddress") private var CurrentAddress: String = ""
     @State private var isOnboardingComplete = false
     @State private var isHomeScreenActive = false
+    @State private var showAlert = false
     @State private var onboardingProgress: CGFloat = 4.0 / 4.0 // Updated progress for Onboarding 4
     @Binding var selectedTab: Int
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -54,12 +56,13 @@ struct Onboarding4: View {
 //                                })
             // Button to complete onboarding
             Button("Complete Onboarding") {
+                
                 // Perform actions when the onboarding is complete
-                if currentAddress.isEmpty || permanentAddress.isEmpty {
-                print("Please fill the required fields")
-                } else {
+                if allFieldsAreFilled(){
                 updateUserDataInFirestore()
                     selectedTab = 4
+                }else {
+                    showAlert = true
                 }
             }
             .buttonStyle(.borderedProminent)
@@ -67,6 +70,13 @@ struct Onboarding4: View {
             .onAppear(){
                 currentAddress=""
                 permanentAddress=""
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Please fill all fields to move forward."),
+                    dismissButton: .default(Text("OK"))
+                )
             }
 
             Spacer()
@@ -99,6 +109,12 @@ struct Onboarding4: View {
         }
     }
 
+    
+    // Function to check if all fields are filled
+    private func allFieldsAreFilled() -> Bool {
+        return !currentAddress.isEmpty && !permanentAddress.isEmpty
+        // Add additional checks for other fields if needed
+    }
 }
 
 //struct Onboarding4_Previews: PreviewProvider {

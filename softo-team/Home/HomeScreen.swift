@@ -12,6 +12,8 @@ struct HomeScreen: View {
     @EnvironmentObject private var viewModel: AuthViewModel
     @State private var showingSettings = false
     @State private var shouldNavigateToLogin = false
+    @Environment(\.presentationMode) var presentationMode
+
 
     var body: some View {
         NavigationView {
@@ -19,7 +21,7 @@ struct HomeScreen: View {
                 Text("Home Screen")
                     .padding()
 
-                NavigationLink(
+        NavigationLink(
                     destination: SettingsView(),
                     isActive: $showingSettings,
                     label: {
@@ -52,15 +54,17 @@ struct HomeScreen: View {
                 }
                 .sheet(isPresented: $showingSettings, content: {
                     SettingsView()
+                    
                 })
 
                 // ... (other UI components)
             }
             .padding()
             .onAppear {
-                if viewModel.isLoggedIn == false {
-                    shouldNavigateToLogin = true
-                }
+                            if viewModel.isLoggedIn == false {
+                                shouldNavigateToLogin = true
+                                
+                            }
             }
         }.navigationBarBackButtonHidden(true)
     }
