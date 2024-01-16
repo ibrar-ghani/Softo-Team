@@ -11,6 +11,7 @@ struct LogInView: View {
     //    @EnvironmentObject private var viewModel: AuthViewModel
     @State var username: String = ""
     @State var password: String = ""
+    var retryAttempts = 3
     @State private var isSignUpActive = false
     @State private var isSignUpCompleted = false
     @State private var isHomeScreenActive = false
@@ -41,7 +42,7 @@ struct LogInView: View {
                             Text("Username")
                                 .padding(.leading, 20)
                             
-                            TextField("Enter Your Email", text: $username)
+                            TextField("Enter Your Email/ User Name", text: $username)
                                 .padding(.horizontal, 2)
                                 .textFieldStyle(.roundedBorder)
                                 .autocapitalization(.none)
@@ -56,33 +57,33 @@ struct LogInView: View {
                             Text("Password")
                                 .padding(.leading, 20)
                             ZStack(alignment: .trailing) {
-                                            if isSecure {
-                                                SecureField("Enter Your Password", text: $password)
-                                                    .padding(.horizontal, 10)
-                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                                    .autocapitalization(.none)
-                                                    .disableAutocorrection(true)
-                                            } else {
-                                                TextField("Enter Your Password", text: $password)
-                                                    .padding(.horizontal, 10)
-                                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                                    .autocapitalization(.none)
-                                                    .disableAutocorrection(true)
-                                            }
-
-                                            Button(action: {
-                                                isSecure.toggle()
-                                            }) {
-                                                Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
-                                                    .foregroundColor(.gray)
-                                                    .padding(.trailing, 10)
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-                                        }
-                                        .padding()
-
-
-
+                                if isSecure {
+                                    SecureField("Enter Your Password", text: $password)
+                                        .padding(.horizontal, 10)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .autocapitalization(.none)
+                                        .disableAutocorrection(true)
+                                } else {
+                                    TextField("Enter Your Password", text: $password)
+                                        .padding(.horizontal, 10)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .autocapitalization(.none)
+                                        .disableAutocorrection(true)
+                                }
+                                
+                                Button(action: {
+                                    isSecure.toggle()
+                                }) {
+                                    Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
+                                        .foregroundColor(.gray)
+                                        .padding(.trailing, 10)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            .padding()
+                            
+                            
+                            
                         }
                     }
                     .padding(.bottom, 30)
@@ -97,16 +98,16 @@ struct LogInView: View {
                         if username.isEmpty || password.isEmpty {
                             print("Please fill the required fields")
                         } else {
-                            Auth.auth().signIn(withEmail: username, password: password) { _, error in
-                                if let error = error {
-                                    print("Error logging in: \(error.localizedDescription)")
-                                    showErrorAlert = true
-                                    errorMessage = "Invalid username or password"
-                                } else {
-                                    print("Login successful")
-                                    viewModel.isLoggedIn = true
-                                    fetchDataFromAPI()
+                            // Determine whether the input is an email or a username
+                            if isValidEmail(email: username) {
+                                // Input is an email, attempt login with email
+                                Auth.auth().signIn(withEmail: username, password: password) { _, error in
+                                    handleLoginResult(error: error)
                                 }
+                            } else {
+                                // Input is a username, implement your logic for username-based login
+                                print("Perform username-based login logic here")
+                                fetchDataFromAPI()
                             }
                         }
                     }
@@ -145,56 +146,92 @@ struct LogInView: View {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
     
-    //Function to fetch data from API
+    // Function to handle login result
+    func handleLoginResult(error: Error?) {
+        if let error = error {
+            print("Error logging in: \(error.localizedDescription)")
+            showErrorAlert = true
+            errorMessage = "Invalid username or password"
+        } else {
+            print("Login successful")
+            viewModel.isLoggedIn = true
+        }
+    }
+    
     func fetchDataFromAPI() {
         guard let apiURL = URL(string: "https://api.staging.softoteam.com/api/v1/Auth/Login") else {
             print("Invalid API URL")
             return
         }
-
+        
         var request = URLRequest(url: apiURL)
         request.httpMethod = "POST" // Assuming it's a POST request, update this based on your API
         
-        // Add your token and refresh token to the request headers
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiUm9sZUlkIjoiMSIsIlVzZXJuYW1lIjoiZGV2IiwianRpIjoiNDU1MjQ5NGYtMWM2Ni00MzgwLWJjNWUtZWRkNDJiZjBjNGE1IiwiZXhwIjoxNzA1NTg2MTg3LCJpc3MiOiJzb2Z0b3NvbC5jb20iLCJhdWQiOiJzb2Z0b3NvbC5jb20ifQ._k2H7y82bnqshwfI8y8ig4z4HOLtTI1ERkEs_06s8Lk"
-        let refreshToken = "01217dce-f6d7-44c7-8e49-1c406a7096d0"
+        // Set the Content-Type header
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.setValue(refreshToken, forHTTPHeaderField: "Refresh-Token")
-
+        // Add your token and refresh token to the request headers
+//        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiUm9sZUlkIjoiMSIsIlVzZXJuYW1lIjoiZGV2IiwianRpIjoiODFmZjJmZjEtNDkyMi00Y2E3LWI1YzgtYjQ1OTQ4OGIyZWJkIiwiZXhwIjoxNzA1NjY2NTE1LCJpc3MiOiJzb2Z0b3NvbC5jb20iLCJhdWQiOiJzb2Z0b3NvbC5jb20ifQ.pXPapvODrI0A70yi6tz1IZKzMp0z_SuCBZobZsdNrLA"
+//        let refreshToken = "7d1dfbda-0bf9-4311-8e2a-8eeb96df2a3a"
+//
+//        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        request.setValue(refreshToken, forHTTPHeaderField: "Refresh-Token")
+        
+        // Encode the request body if needed
+        // Example: If your API expects a JSON body, encode the parameters and set the HTTPBody
+        let requestBody: [String: Any] = ["username": username, "password": password]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+        } catch {
+            print("Error encoding request body: \(error.localizedDescription)")
+            return
+        }
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if let error = error {
                 print("Error fetching data from API: \(error.localizedDescription)")
+                // Retry the request after a delay (adjust the delay as needed)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.fetchDataFromAPI()
+                }
                 return
             }
-
+            
             guard let data = data else {
                 print("No data received from API")
                 return
             }
-
+            
+            // Print the raw data
+            print("Raw API Response Data:")
+            if let responseString = String(data: data, encoding: .utf8) {
+                print(responseString)
+            }
+            
             do {
-                // Parse the data using Codable if your API returns JSON
+                // Your existing code for parsing
                 let decoder = JSONDecoder()
-                 let apiResponse = try decoder.decode(LogInResponseModel.self, from: data)
-
-                // Update your UI or handle the API response as needed
-                DispatchQueue.main.async {
-                     apiData = "\(apiResponse)" // Use the properties of YourApiResponseModel
-                }
+                let apiResponse = try decoder.decode(LogInResponseModel.self, from: data)
+                print("API Response Auth : \(apiResponse)")
+                print("API Response Auth Token : \(apiResponse.token)")
+                print("API Response Auth Refresh Token : \(apiResponse.refreshToken)")
+                
+                // ... rest of your code ...
             } catch {
                 print("Error parsing API response: \(error.localizedDescription)")
             }
         }.resume()
     }
-
+    
 }
 
 struct LogInResponseModel: Decodable {
     // Define properties matching the structure of the API response
     // For example:
-    let username: String
-    let password: String
+    let token: String
+    let refreshToken: String
     // ... other properties
 }
 
