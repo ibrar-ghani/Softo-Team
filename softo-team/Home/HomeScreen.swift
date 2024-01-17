@@ -13,60 +13,61 @@ struct HomeScreen: View {
     @State private var showingSettings = false
     @State private var shouldNavigateToLogin = false
     @Environment(\.presentationMode) var presentationMode
-
+    @State private var showingProfile = false
 
     var body: some View {
         NavigationView {
             VStack {
                 Text("Home Screen")
-                    .padding()
-
-        NavigationLink(
-                    destination: SettingsView(),
-                    isActive: $showingSettings,
-                    label: {
-                        EmptyView()
-                    }
-                )
-                .hidden()
+                .padding()
+                Spacer()
                 
-                
-//                NavigationLink(
-//                    destination: LoginView(),
-//                    isActive: $shouldNavigateToLogin,
-//                    label: {
-//                        EmptyView()
-//                    }
-//                )
-//                .hidden()
-
-                Button(action: {
-                    showingSettings.toggle()
-                }) {
-                    Image(systemName: "gear")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                        .padding()
-                }
-                .sheet(isPresented: $showingSettings, content: {
-                    SettingsView()
+                HStack {
+                    Spacer()
                     
-                })
+                    Button(action: {
+                        showingProfile.toggle()
+                    }) {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20) // Adjust size as needed
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                            .padding()
+                    }
+                    .sheet(isPresented: $showingProfile, content: {
+                        ProfileView() // Change this to your actual profile view
+                    })
 
-                // ... (other UI components)
+                    Button(action: {
+                        showingSettings.toggle()
+                    }) {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 20, height: 20) // Adjust size as needed
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                            .padding()
+                    }
+                    .sheet(isPresented: $showingSettings, content: {
+                        SettingsView()
+                    })
+                    
+                    Spacer()
+                }
+                .padding()
             }
-            .padding()
             .onAppear {
-                            if viewModel.isLoggedIn == false {
-                                shouldNavigateToLogin = true
-                                
-                            }
+                if viewModel.isLoggedIn == false {
+                    shouldNavigateToLogin = true
+                }
             }
-        }.navigationBarBackButtonHidden(true)
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

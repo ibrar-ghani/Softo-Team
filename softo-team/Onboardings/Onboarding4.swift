@@ -9,8 +9,8 @@ import SwiftUI
 import Firebase
 
 struct Onboarding4: View {
-    @State private var permanentAddress: String = ""
-    @State private var currentAddress: String = ""
+//    @State private var permanentAddress: String = ""
+//    @State private var currentAddress: String = ""
     @AppStorage("permanentAddress") private var PermanentAddress: String = ""
     @AppStorage("currentAddress") private var CurrentAddress: String = ""
     @State private var isOnboardingComplete = false
@@ -39,12 +39,12 @@ struct Onboarding4: View {
             .padding()
 
             // Permanent Address
-            TextField("Permanent Address", text: $permanentAddress)
+            TextField("Permanent Address", text: $PermanentAddress)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
             // Current Address
-            TextField("Current Address", text: $currentAddress)
+            TextField("Current Address", text: $CurrentAddress)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
@@ -68,8 +68,8 @@ struct Onboarding4: View {
             .buttonStyle(.borderedProminent)
             .padding()
             .onAppear(){
-                currentAddress=""
-                permanentAddress=""
+                CurrentAddress=""
+                PermanentAddress=""
             }
             .alert(isPresented: $showAlert) {
                 Alert(
@@ -92,8 +92,8 @@ struct Onboarding4: View {
 
             // Update user data with residence information
             let residenceData: [String: Any] = [
-                "permanentAddress": permanentAddress,
-                "currentAddress": currentAddress
+                "permanentAddress": PermanentAddress,
+                "currentAddress": CurrentAddress
                 // Add other fields specific to residence if needed
             ]
 
@@ -112,7 +112,7 @@ struct Onboarding4: View {
     
     // Function to check if all fields are filled
     private func allFieldsAreFilled() -> Bool {
-        return !currentAddress.isEmpty && !permanentAddress.isEmpty
+        return !CurrentAddress.isEmpty && !PermanentAddress.isEmpty
         // Add additional checks for other fields if needed
     }
 }

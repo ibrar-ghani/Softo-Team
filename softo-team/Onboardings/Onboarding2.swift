@@ -14,7 +14,8 @@ struct Onboarding2: View {
     @AppStorage("birthDate") private var birthDateRaw: TimeInterval = Date().timeIntervalSinceReferenceDate
     @State private var birthDate: Date = Date()
     @AppStorage("phoneNumber") private var phoneNumber: String = ""
-    @AppStorage("selectedCountryCode") private var selectedCountryCode: String = "+1"
+    @AppStorage("SelectedCountryCode0") private var SelectedCountryCode0: String = "+1"
+    @AppStorage("selectedBloodGroup") private var selectedBloodGroup: String = ""
     @State private var isOnboarding3Active = false
     @Binding var selectedTab: Int
     @State private var showAlert = false
@@ -74,7 +75,7 @@ struct Onboarding2: View {
                     
                     HStack {
                         // Country Code Picker
-                        Picker("Country Code", selection: $selectedCountryCode) {
+                        Picker("Country Code", selection: $SelectedCountryCode0) {
                             ForEach(countryCodes, id: \.self) {
                                 Text($0)
                             }
@@ -104,7 +105,7 @@ struct Onboarding2: View {
                     Text("Blood Group")
                         .font(.headline)
                     
-                    Picker("Blood Group", selection: $selectedGender) {
+                    Picker("Blood Group", selection: $selectedBloodGroup) {
                         ForEach(bloodGroups, id: \.self) {
                             Text($0)
                         }
@@ -135,7 +136,7 @@ struct Onboarding2: View {
                     .buttonStyle(.borderedProminent)
                     .padding()
                     .onAppear(){
-                        selectedCountryCode="+1"
+                        SelectedCountryCode0="+1"
                         phoneNumber=""
                         birthDate=Date()
                         birthDateRaw = Date().timeIntervalSinceReferenceDate
@@ -157,7 +158,7 @@ struct Onboarding2: View {
     private func allFieldsAreFilled() -> Bool {
         return !selectedGender.isEmpty
             && !phoneNumber.isEmpty
-            && !selectedCountryCode.isEmpty
+            && !SelectedCountryCode0.isEmpty
         // Add additional checks for other fields if needed
     }
     
@@ -173,7 +174,7 @@ struct Onboarding2: View {
             let userData: [String: Any] = [
                 "gender": selectedGender,
                 "birthDate": birthDate,
-                "phoneNumber": "\(selectedCountryCode) \(phoneNumber)",
+                "phoneNumber": "\(SelectedCountryCode0) \(phoneNumber)",
                 // "bloodGroup": selectedBloodGroup // You might want to add this field if needed
             ]
             

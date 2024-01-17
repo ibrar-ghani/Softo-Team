@@ -118,6 +118,13 @@ struct LogInView: View {
                         username = ""
                         password = ""
                     }
+                    .alert(isPresented: $showErrorAlert) {
+                        Alert(
+                        title: Text("Invalid Credentials"),
+                        message: Text("The provided username or password is incorrect. Please try again."),
+                        dismissButton: .default(Text("OK"))
+                        )
+                    }
                     
                     NavigationLink(destination: SignUpView(), isActive: $isSignUpActive) {
                         Text("Don't have an account?")
@@ -218,7 +225,11 @@ struct LogInView: View {
                 print("API Response Auth Token : \(apiResponse.token)")
                 print("API Response Auth Refresh Token : \(apiResponse.refreshToken)")
                 
-                // ... rest of your code ...
+                // Check if tokens are not nil or empty
+                if !apiResponse.token.isEmpty && !apiResponse.refreshToken.isEmpty {
+                // Set the isLoggedIn property to true
+                self.viewModel.isLoggedIn = true
+                }
             } catch {
                 print("Error parsing API response: \(error.localizedDescription)")
             }

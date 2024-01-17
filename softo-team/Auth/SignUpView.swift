@@ -17,18 +17,15 @@ struct UserProfile {
 }
 
 struct SignUpView: View{
-    @State var firstname:String=""
-    @State var lastname:String=""
-    @State var username:String=""
     @State var password:String=""
     @State var conformpassword:String=""
     @State private var isLogInActive = false
     @State private var isTabViewActive = false
     @State private var selectedTab: Int = 0
     @State private var isSecure: Bool = true
-    @AppStorage("user_firstname") private var storedFirstname: String = ""
-    @AppStorage("user_lastname") private var storedLastname: String = ""
-    @AppStorage("user_username") private var storedUsername: String = ""
+    @AppStorage("firstname") private var firstname: String = ""
+    @AppStorage("lastname") private var lastname: String = ""
+    @AppStorage("username") private var username: String = ""
     
     
     var body: some View{
@@ -196,11 +193,6 @@ struct SignUpView: View{
                                     saveUserProfileToFirestore(userProfile)
                                     print("User created successfully")
                                     
-                                    // Save user data to AppStorage
-                                     storedFirstname = firstname
-                                     storedLastname = lastname
-                                     storedUsername = username
-                                    
                                     isTabViewActive = true
                                 }
                             }
@@ -216,7 +208,6 @@ struct SignUpView: View{
                             password = ""
                             conformpassword=""
                             }
-                    
                     NavigationLink(destination: LogInView(), isActive: $isLogInActive){
                         Text("Already have an account?")
                             .foregroundColor(.red)

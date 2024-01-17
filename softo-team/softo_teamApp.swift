@@ -51,6 +51,7 @@ struct softo_teamApp: App {
     var body: some Scene {
         WindowGroup {
             
+            //ProfileView()
             LogInView()
                 .environmentObject(authViewModel)
             
