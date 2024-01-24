@@ -14,13 +14,13 @@ struct MyTabView: View {
         TabView(selection: $selectedTab) {
             Onboarding1(selectedTab: $selectedTab)
                 .tag(0)
-                
+            
             Onboarding2(selectedTab: $selectedTab)
                 .tag(1)
-
+            
             Onboarding3(selectedTab: $selectedTab)
                 .tag(2)
-                
+            
             Onboarding4(selectedTab: $selectedTab)
                 .tag(3)
             HomeScreen()

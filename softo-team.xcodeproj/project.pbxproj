@@ -26,6 +26,9 @@
 		CE9DB8722B47EE800003CEBD /* Onboarding4.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9DB8712B47EE800003CEBD /* Onboarding4.swift */; };
 		CECAC3D32B4FB76F006DF030 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAC3D22B4FB76F006DF030 /* SettingsView.swift */; };
 		CECAC3D52B4FBDD9006DF030 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAC3D42B4FBDD9006DF030 /* TabView.swift */; };
+		CEE0D3BF2B5FA886005FB5AB /* InfoResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE0D3BE2B5FA885005FB5AB /* InfoResponseModel.swift */; };
+		CEE0D3C12B60EC31005FB5AB /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE0D3C02B60EC31005FB5AB /* AuthViewModel.swift */; };
+		CEE0D3C32B60EE50005FB5AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE0D3C22B60EE50005FB5AB /* AppDelegate.swift */; };
 		CEF98ABD2B57950400BC3F44 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF98ABC2B57950400BC3F44 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,9 @@
 		CE9DB8712B47EE800003CEBD /* Onboarding4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding4.swift; sourceTree = "<group>"; };
 		CECAC3D22B4FB76F006DF030 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CECAC3D42B4FBDD9006DF030 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		CEE0D3BE2B5FA885005FB5AB /* InfoResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoResponseModel.swift; sourceTree = "<group>"; };
+		CEE0D3C02B60EC31005FB5AB /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		CEE0D3C22B60EE50005FB5AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF98ABC2B57950400BC3F44 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +167,9 @@
 			children = (
 				CE3E05562B45534300A39B80 /* LogInView.swift */,
 				CE3E05582B45535400A39B80 /* SignUpView.swift */,
+				CEE0D3BE2B5FA885005FB5AB /* InfoResponseModel.swift */,
+				CEE0D3C02B60EC31005FB5AB /* AuthViewModel.swift */,
+				CEE0D3C22B60EE50005FB5AB /* AppDelegate.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -330,12 +339,15 @@
 				CE9DB8722B47EE800003CEBD /* Onboarding4.swift in Sources */,
 				CE3E05552B45533800A39B80 /* Onboarding1.swift in Sources */,
 				CE3E05592B45535500A39B80 /* SignUpView.swift in Sources */,
+				CEE0D3C32B60EE50005FB5AB /* AppDelegate.swift in Sources */,
 				CECAC3D32B4FB76F006DF030 /* SettingsView.swift in Sources */,
 				CE991CB62B46938C00BBFA7F /* Onboarding3.swift in Sources */,
+				CEE0D3BF2B5FA886005FB5AB /* InfoResponseModel.swift in Sources */,
 				CE3E05662B45737700A39B80 /* Onboarding2.swift in Sources */,
 				CE3E055B2B45536100A39B80 /* HomeScreen.swift in Sources */,
 				CE3E05572B45534300A39B80 /* LogInView.swift in Sources */,
 				CEF98ABD2B57950400BC3F44 /* ProfileView.swift in Sources */,
+				CEE0D3C12B60EC31005FB5AB /* AuthViewModel.swift in Sources */,
 				CE3E052B2B45531900A39B80 /* softo_teamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

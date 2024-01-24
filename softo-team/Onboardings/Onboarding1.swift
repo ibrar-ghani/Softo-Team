@@ -20,7 +20,7 @@ struct Onboarding1: View {
     @Binding var selectedTab: Int
     @State private var showAlert = false
     let checkboxTexts = ["Figma Designer", "IOS Developer", "Flutter Developer", "Node.js Developer", "Android Developer"]
-
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -29,7 +29,7 @@ struct Onboarding1: View {
                     .italic()
                     .bold()
                     .padding()
-
+                
                 // Horizontal Progress Bar
                 GeometryReader { geometry in
                     VStack {
@@ -39,17 +39,17 @@ struct Onboarding1: View {
                     }
                 }
                 .padding()
-
+                
                 Text("What best describes you?")
                     .font(.headline)
                     .padding()
-
+                
                 ForEach(0..<checkboxTexts.count) { optionIndex in
                     CheckboxRow(text: checkboxTexts[optionIndex], isSelected: selectedState(for: optionIndex))
                         .padding(.vertical, 15)
                 }
                 Spacer()
-
+                
                 Button("Next") {
                     if selectedOption1 || selectedOption2 || selectedOption3 || selectedOption4 || selectedOption5 {
                         let selectedOptionsTexts = getSelectedOptionsTexts()
@@ -72,17 +72,17 @@ struct Onboarding1: View {
             }
         }
     }
-
+    
     // Function to update user data and onboarding data in Firestore
     func UpdateUserDataInFirestore(selectedOptionsTexts: [String]) {
         if let userId = Auth.auth().currentUser?.uid {
             let db = Firestore.firestore()
             let userRef = db.collection("users").document(userId)
-
+            
             let userData: [String: Any] = [
                 "selectedOptions": selectedOptionsTexts
             ]
-
+            
             userRef.updateData(userData) { error in
                 if let error = error {
                     print("Error updating user data: \(error.localizedDescription)")
@@ -92,7 +92,7 @@ struct Onboarding1: View {
             }
         }
     }
-
+    
     // Function to get the selected options' texts
     func getSelectedOptionsTexts() -> [String] {
         var selectedOptionsTexts: [String] = []
@@ -103,7 +103,7 @@ struct Onboarding1: View {
         }
         return selectedOptionsTexts
     }
-
+    
     // Function to determine the selected state for an option
     func selectedState(for index: Int) -> Binding<Bool> {
         return Binding(
@@ -146,7 +146,7 @@ struct Onboarding1: View {
 struct CheckboxRow: View {
     let text: String
     @Binding var isSelected: Bool
-
+    
     var body: some View {
         HStack(spacing: 2) {
             Button(action: {
@@ -158,11 +158,11 @@ struct CheckboxRow: View {
                     .padding()
             }
             .foregroundColor(isSelected ? .blue : .gray)
-
+            
             Text(text)
                 .foregroundColor(.black)
                 .padding(.leading, 8)
-
+            
             Spacer()
         }
         .padding(.vertical, 4)

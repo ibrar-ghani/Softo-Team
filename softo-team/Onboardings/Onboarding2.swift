@@ -60,12 +60,12 @@ struct Onboarding2: View {
                 
                 // Date of Birth
                 DatePicker("Date of Birth", selection: $birthDate, displayedComponents: .date)
-                                    .font(.headline)
-                                    .datePickerStyle(CompactDatePickerStyle())
-                                    .padding()
-                                    .onChange(of: birthDate) { newValue in
-                                        birthDateRaw = newValue.timeIntervalSinceReferenceDate
-                                    }
+                    .font(.headline)
+                    .datePickerStyle(CompactDatePickerStyle())
+                    .padding()
+                    .onChange(of: birthDate) { newValue in
+                        birthDateRaw = newValue.timeIntervalSinceReferenceDate
+                    }
                 
                 // Phone Number with Country Code
                 VStack(alignment: .leading) {
@@ -116,32 +116,33 @@ struct Onboarding2: View {
                 
                 // Button
                 Spacer().frame(height: 100)
-                    Spacer()
-                    
-//                    // NavigationLink (Next)
-//                    NavigationLink(
-//                        destination: Onboarding3(),
-//                        isActive: $isOnboarding3Active,
-//                        label: { EmptyView() }
-//                    )
-                    Button("Next") {
-                        if allFieldsAreFilled() {
-                            updateUserDataInFirestore()
-                            selectedTab = 2
-                            print("Next button pressed - Navigating to Onboarding3")
-                        } else {
-                            showAlert = true
-                        }
+                Spacer()
+                
+                //                    // NavigationLink (Next)
+                //                    NavigationLink(
+                //                        destination: Onboarding3(),
+                //                        isActive: $isOnboarding3Active,
+                //                        label: { EmptyView() }
+                //                    )
+                Button("Next") {
+                    if allFieldsAreFilled() {
+                        updateUserDataInFirestore()
+                        selectedTab = 2
+                        print("Next button pressed - Navigating to Onboarding3")
+                    } else {
+                        showAlert = true
                     }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
-                    .onAppear(){
-                        SelectedCountryCode0="+1"
-                        phoneNumber=""
-                        birthDate=Date()
-                        birthDateRaw = Date().timeIntervalSinceReferenceDate
-                        selectedGender=""
-                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
+                .onAppear(){
+                    SelectedCountryCode0="+1"
+                    phoneNumber = " "
+                    birthDate = Date()
+                    birthDateRaw = Date().timeIntervalSinceReferenceDate
+                    selectedGender = " "
+                    selectedBloodGroup = " "
+                }
             }
             .alert(isPresented: $showAlert) {
                 Alert(
@@ -157,8 +158,8 @@ struct Onboarding2: View {
     // Function to check if all fields are filled
     private func allFieldsAreFilled() -> Bool {
         return !selectedGender.isEmpty
-            && !phoneNumber.isEmpty
-            && !SelectedCountryCode0.isEmpty
+        && !phoneNumber.isEmpty
+        && !SelectedCountryCode0.isEmpty
         // Add additional checks for other fields if needed
     }
     
@@ -175,7 +176,7 @@ struct Onboarding2: View {
                 "gender": selectedGender,
                 "birthDate": birthDate,
                 "phoneNumber": "\(SelectedCountryCode0) \(phoneNumber)",
-                // "bloodGroup": selectedBloodGroup // You might want to add this field if needed
+                "bloodGroup": selectedBloodGroup
             ]
             
             // Set the document data in Firestore

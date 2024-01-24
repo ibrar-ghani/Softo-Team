@@ -14,12 +14,12 @@ struct HomeScreen: View {
     @State private var shouldNavigateToLogin = false
     @Environment(\.presentationMode) var presentationMode
     @State private var showingProfile = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
                 Text("Home Screen")
-                .padding()
+                    .padding()
                 Spacer()
                 
                 HStack {
@@ -40,7 +40,7 @@ struct HomeScreen: View {
                     .sheet(isPresented: $showingProfile, content: {
                         ProfileView() // Change this to your actual profile view
                     })
-
+                    
                     Button(action: {
                         showingSettings.toggle()
                     }) {
@@ -61,15 +61,11 @@ struct HomeScreen: View {
                 }
                 .padding()
             }
-            .onAppear {
-                if viewModel.isLoggedIn == false {
-                    shouldNavigateToLogin = true
-                }
-            }
-        }
-        .navigationBarBackButtonHidden(true)
+        }  .navigationBarBackButtonHidden(true)
     }
+    
 }
+
 
 
 
