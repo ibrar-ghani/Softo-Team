@@ -203,7 +203,6 @@ struct LogInView: View {
             
             do {
                 if let infoResponseModel = try? JSONDecoder().decode(PersonalInfoo.self, from: data) {
-                    //print("infoResponseModel : \(String(describing: infoResponseModel))")
                     print("Decoded Model: \(infoResponseModel)")
                     // Update SwiftUI views on the main thread
                     DispatchQueue.main.async {
@@ -236,7 +235,7 @@ struct LogInView: View {
                 print("Error decoding personal info response: \(error)")
                 print("Response Data: \(String(data: data, encoding: .utf8) ?? "N/A")")
             }
-
+            
         }.resume()
     }
     
@@ -249,36 +248,36 @@ struct LogInView: View {
         }
         var request = URLRequest(url: apiURL)
         request.httpMethod = "GET" // Assuming it's a POST request, update this based on your API
-
+        
         // Set the Content-Type header
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         // Add your token and refresh token to the request headers
         request.setValue("Bearer \(viewModel.accessToken)", forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Error fetching data from API: \(error.localizedDescription)")
                 completion() // Call completion even in case of an error
                 return
             }
-
+            
             guard let data = data else {
                 print("No data received from API")
                 completion() // Call completion if there is no data
                 return
             }
-
+            
             do {
                 let decoder = JSONDecoder()
                 let apiResponse = try decoder.decode(AuthInfoResponseModel.self, from: data)
-
+                
                 // Access the 'id' from the API response
                 let userId = apiResponse.id
                 viewModel.userId = userId
                 print("User ID: \(userId)")
                 print("viewModel.userId : \(viewModel.userId)")
-
+                
                 // Continue with the rest of your code
                 completion() // Call completion once the data is successfully processed
             } catch {
@@ -287,8 +286,8 @@ struct LogInView: View {
             }
         }.resume()
     }
-
-   //Function to make a log IN request and get the tokens from the API
+    
+    //Function to make a log IN request and get the tokens from the API
     func fetchDataFromAPI() {
         guard let apiURL = URL(string: "https://api.staging.softoteam.com/api/v1/Auth/Login") else {
             print("Invalid API URL")

@@ -40,7 +40,15 @@ struct SettingsView: View {
                     primaryButton: .cancel(),
                     secondaryButton: .destructive(Text("Logout")) {
                         // Perform logout action
-                        viewModel.signOut()
+                        viewModel.signOut { error in
+                            if let error = error {
+                                // Handle error, show an alert, etc.
+                                print("Failed to sign out: \(error.localizedDescription)")
+                            } else {
+                                // Successfully signed out
+                            }
+                        }
+                        
                         // Trigger navigation to login
                         //coordinator.shouldNavigateToLogin = true
                         shouldShowLoginSheet = true
@@ -56,12 +64,6 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $shouldShowLoginSheet) {
             LogInView()
         }
-        //                    .background(
-        //                        NavigationLink(destination: LogInView(), isActive: $coordinator.shouldNavigateToLogin) {
-        //                            EmptyView()
-        //                        }
-        //                        .navigationBarHidden(true)
-        //                    )
     }
 }
 
