@@ -1,17 +1,18 @@
-//
-//  softo_teamApp.swift
-//  softo-team
-//
-//  Created by user on 03/01/2024.
-//
-
 import SwiftUI
 
 @main
+
 struct softo_teamApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var authViewModel = AuthViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            //ProfileView()
+            LogInView()
+                .environmentObject(authViewModel)
         }
+        
     }
+    
 }
