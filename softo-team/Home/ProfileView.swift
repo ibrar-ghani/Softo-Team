@@ -307,14 +307,15 @@ struct ProfileView: View {
                 Section {
                     Button(action: {
                         if isEditing {
-                        editedemergencyContactRelationshipId = Relationship.idFromName(editedemergencyContactRelationshipName) ?? 0
-
+                            editedemergencyContactRelationshipId = Relationship.idFromName(editedemergencyContactRelationshipName) ?? 0
+                            
                             let updateRequest = UpdateProfileRequest(
                                 firstName: editedFirstName,
                                 lastName: editedLastName,
                                 userName: editeduserName,
                                 email: editedEmail,
                                 genderName: editedgenderName,
+                                gender: editedGender,
                                 phone: editedphone,
                                 emergencyContactName: editedemergencyContactName,
                                 emergencyContactRelationshipName: editedemergencyContactRelationshipName,
@@ -371,6 +372,7 @@ struct ProfileView: View {
                             editedpermanentCountry = authViewModel.permanentCountry
                             editeddob = authViewModel.dob
                             editedbloodGroupName = authViewModel.bloodGroupName
+                            editedbloodGroup = authViewModel.bloodGroup
                             // Initialize other edited fields
                             isEditing = true
                         }
@@ -420,7 +422,7 @@ enum BloodGroup: String, CaseIterable {
     case abNegative = "AB-"
     case oPositive = "O+"
     case oNegative = "O-"
-
+    
     var id: Int {
         switch self {
         case .aPositive: return 1
@@ -433,13 +435,13 @@ enum BloodGroup: String, CaseIterable {
         case .oNegative: return 8
         }
     }
-
+    
     static func nameFromId(_ id: Int) -> String? {
-            guard let bloodGroup = BloodGroup.allCases.first(where: { $0.id == id }) else {
-                return nil
-            }
-            return bloodGroup.rawValue
+        guard let bloodGroup = BloodGroup.allCases.first(where: { $0.id == id }) else {
+            return nil
         }
+        return bloodGroup.rawValue
+    }
 }
 
 // Add the Relationship enum here
@@ -450,7 +452,7 @@ enum Relationship: String, CaseIterable {
     case cousin
     case sister
     case guardian
-
+    
     var id: Int {
         switch self {
         case .father: return 1
@@ -461,7 +463,7 @@ enum Relationship: String, CaseIterable {
         case .guardian: return 6
         }
     }
-
+    
     static func idFromName(_ name: String) -> Int? {
         guard let relationship = Relationship(rawValue: name.lowercased()) else {
             return nil
@@ -474,7 +476,7 @@ enum Gender: String, CaseIterable {
     case male = "m"
     case female = "f"
     case other = "o" // You can add another case for "Other" if needed
-
+    
     var displayName: String {
         switch self {
         case .male:
@@ -485,11 +487,11 @@ enum Gender: String, CaseIterable {
             return "Other"
         }
     }
-
+    
     var id: String {
         return rawValue
     }
-
+    
     static func nameFromId(_ id: String) -> String? {
         guard let gender = Gender(rawValue: id.lowercased()) else {
             return nil

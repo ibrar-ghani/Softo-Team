@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - PersonalInfoo
-struct personalInfoo: Codable {
+struct UpdatepersonalInfoo: Codable {
     let firstName, lastName, dob, gender: String
     let bloodGroup: Int
     let phone, emergencyContactName, emergencyContactPhone: String

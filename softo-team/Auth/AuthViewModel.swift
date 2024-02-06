@@ -135,6 +135,7 @@ class AuthViewModel: ObservableObject {
             userName: userName,
             email: email,
             genderName: genderName,
+            gender: gender,
             phone: phone,
             emergencyContactName: emergencyContactName,
             emergencyContactRelationshipName: emergencyContactRelationshipName,
@@ -157,143 +158,106 @@ class AuthViewModel: ObservableObject {
         )
     }
     
-    // Function to update the user profile
-    func updateProfile(request: UpdateProfileRequest, accessToken: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        // Update the properties in AuthViewModel
-        self.firstName = request.firstName
-        self.lastName = request.lastName
-        self.userName = request.userName
-        self.email = request.email
-        self.genderName = request.genderName
-        self.phone = request.phone
-        self.emergencyContactName = request.emergencyContactName
-        self.emergencyContactRelationshipName = request.emergencyContactRelationshipName
-        self.emergencyContactRelationshipId = request.relationshipId
-        self.emergencyContactPhone = request.emergencyContactPhone
-        self.currentAddressLine1 = request.currentAddressLine1
-        self.currentAddressLine2 = request.currentAddressLine2
-        self.currentCity = request.currentCity
-        self.currentPostalCode = request.currentPostalCode
-        self.currentCountry = request.currentCountry
-        self.permanentAddressLine1 = request.permanentAddressLine1
-        self.permanentAddressLine2 = request.permanentAddressLine2
-        self.permanentCity = request.permanentCity
-        self.permanentPostalCode = request.permanentPostalCode
-        self.permanentCountry = request.permanentCountry
-        self.dob = request.dob
-        self.bloodGroupName = request.bloodGroupName
-        self.bloodGroup = request.bloodGroupId
-        // Update other properties as needed
+    // Function to set user profile data
+    private func setUserProfileData(request: UpdateProfileRequest) -> UpdatepersonalInfoo {
+        let updatedInfo = UpdatepersonalInfoo(
+            firstName: request.firstName,
+            lastName: request.lastName,
+            dob: request.dob,
+            gender: request.gender,
+            bloodGroup: request.bloodGroupId,
+            phone: request.phone,
+            emergencyContactName: request.emergencyContactName,
+            emergencyContactPhone: request.emergencyContactPhone,
+            emergencyContactRelationshipID: request.relationshipId,
+            permanentAddress: EnAddress(
+                addressLine1: request.permanentAddressLine1,
+                addressLine2: request.permanentAddressLine2,
+                city: request.permanentCity,
+                country: request.permanentCountry,
+                postalCode: request.permanentPostalCode
+            ),
+            currentAddress: EnAddress(
+                addressLine1: request.currentAddressLine1,
+                addressLine2: request.currentAddressLine2,
+                city: request.currentCity,
+                country: request.currentCountry,
+                postalCode: request.currentPostalCode
+            ),
+            profilePicture: "", // You need to provide a default value or update this based on your logic
+            cnicFront: "", // You need to provide a default value or update this based on your logic
+            cnicBack: "" // You need to provide a default value or update this based on your logic
+        )
         
-        // Create an instance of URLSession
-        guard let url = URL(string: "https://api.staging.softoteam.com/api/v1/Users/PersonalInfo") else {
-            completion(.failure(NetworkError.invalidURL))
+        // You can update other properties as needed
+        
+        return updatedInfo
+        
+    }
+    
+    // Function to update the user profile
+    func updateProfile(request: UpdateProfileRequest, accessToken: String, completion: @escaping (Result<UserProfile, Error>) -> Void) {
+        // Set user profile data
+        guard let url = URL(string: "https://api.staging.softoteam.com/api/v1/Users/\(userId)/PersonalInfo") else {
+            print("Error: cannot create URL")
             return
         }
-
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "PATCH"  // Change to PUT
-        urlRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        // Convert the request model to JSON data
-        do {
-            let jsonData = try JSONEncoder().encode(request)
-            urlRequest.httpBody = jsonData
-        } catch {
-            print("Error encoding request model: \(error.localizedDescription)")
-            completion(.failure(error))
+        
+        // Get updated personal info from the request
+        let updatedPersonalInfo = setUserProfileData(request: request)
+        print("personal info : \(updatedPersonalInfo)")
+        // Convert model to JSON data
+        // Convert model to JSON data
+        guard let jsonData = try? JSONEncoder().encode(updatedPersonalInfo) else {
+            print("Error: Trying to convert model to JSON data")
             return
         }
+        
+        // Create the request
+        var request = URLRequest(url: url)
+        let authToken = accessToken
+        request.httpMethod = "PATCH"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
 
-        // Perform the network request
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            // Handle the response or error here
-            if let error = error {
-                print("Network request error: \(error.localizedDescription)")
-                completion(.failure(error))
+        request.httpBody = jsonData
+        print("Request jsonBody: \(jsonData) ")
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error: error calling PUT")
+                print(error!)
                 return
             }
-
-            // Print HTTP Status Code
-            if let httpResponse = response as? HTTPURLResponse {
-                print("HTTP Status Code: \(httpResponse.statusCode)")
-
-                // Handle non-successful status codes
-                if !(200..<300).contains(httpResponse.statusCode) {
-                    print("Non-successful HTTP status code: \(httpResponse.statusCode)")
-
-                    // Print raw response data
-                    if let responseData = data {
-                        let responseString = String(data: responseData, encoding: .utf8)
-                        print("Raw Response Data: \(responseString ?? "Unable to decode response data")")
-                    }
-
-                    // Handle validation errors
-                    if let responseData = data {
-                        do {
-                            let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: responseData)
-                            if let errors = errorResponse.errors {
-                                for (field, messages) in errors {
-                                    print("Validation error for field '\(field)': \(messages.joined(separator: ", "))")
-
-                                    // Pass the validation error to the completion handler or present to the user
-                                    let validationError = ValidationError(field: field, messages: messages)
-                                    completion(.failure(validationError))
-                                }
-                            }
-                        } catch {
-                            print("Error decoding error response: \(error.localizedDescription)")
-
-                            // Pass the decoding error to the completion handler or present to the user
-                            completion(.failure(error))
-                        }
-                    }
-
-                    // Add more specific error handling based on the status code
-                    switch httpResponse.statusCode {
-                    case 401:
-                        print("Unauthorized: Check authentication or permissions.")
-                        // Handle other status codes as needed
-                    default:
-                        print("Unhandled HTTP status code")
-                    }
-
-                    // completion(.failure(YourError.unauthorized)) // Change to your specific error type
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+//            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+//                print("Error: HTTP request failed")
+//                return
+//            }
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
                     return
                 }
-
-
-            }
-
-            // Print raw response data
-            if let responseData = data {
-                let responseString = String(data: responseData, encoding: .utf8)
-                print("Raw Response Data: \(responseString ?? "Unable to decode response data")")
-            }
-
-            // Add the provided code to handle empty or nil response data
-            if let data = data, !data.isEmpty {
-                do {
-                    let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
-                    print("Response from server: \(jsonResponse)")
-                    completion(.success(()))
-                } catch {
-                    print("Error decoding JSON response: \(error.localizedDescription)")
-                    completion(.failure(error))
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
                 }
-            } else {
-                print("Empty or nil response data")
-                // Handle this case as needed
-               // completion(.failure(YourError.emptyResponse)) // Change to your specific error type
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Could print JSON in String")
+                    return
+                }
+                
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
             }
-        }
-
-
-        // Resume the task
-        task.resume()
-
+        }.resume()
     }
+    
 }
 
 struct UpdateProfileRequest: Codable {
@@ -302,6 +266,7 @@ struct UpdateProfileRequest: Codable {
     var userName: String
     var email: String
     var genderName: String
+    var gender: String
     var phone: String
     var emergencyContactName: String
     var emergencyContactRelationshipName: String
